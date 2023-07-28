@@ -3,7 +3,6 @@ package;
 import flixel.FlxG;
 import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
-import flixel.graphics.FlxGraphic;
 import Controls;
 
 class ClientPrefs {
@@ -87,6 +86,7 @@ class ClientPrefs {
 		'debug_2'		=> [EIGHT, NONE]
 	];
 	public static var defaultKeys:Map<String, Array<FlxKey>> = null;
+	public static var judgementCounter:Bool = true;
 
 	public static function loadDefaultKeys() {
 		defaultKeys = keyBinds.copy();
@@ -130,6 +130,8 @@ class ClientPrefs {
 		FlxG.save.data.pauseMusic = pauseMusic;
 		FlxG.save.data.checkForUpdates = checkForUpdates;
 		FlxG.save.data.comboStacking = comboStacking;
+
+		FlxG.save.data.judgementCounter = judgementCounter;
 	
 		FlxG.save.flush();
 
@@ -266,6 +268,8 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.comboStacking != null)
 			comboStacking = FlxG.save.data.comboStacking;
+		if (FlxG.save.data.judgementCounter != null) 
+			judgementCounter = FlxG.save.data.judgementCounter;
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls_v2', 'ninjamuffin99');

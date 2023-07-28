@@ -26,7 +26,6 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.6.3'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -96,7 +95,7 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 
-		checker = new FlxBackdrop(Paths.image('checkeredBG'), 0.2, 0.2, true, true); //background infinite
+		checker = new FlxBackdrop(Paths.image('checkeredBG'), X, 0, 0); //background infinite
 		//checker.velocity.set(112, 110); //background infinite
 		checker.updateHitbox(); //background infinite
 		checker.scrollFactor.set(0, 0); //background infinite
@@ -137,10 +136,12 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
+		// new plus engine
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "New Plus Engine v" + VERSION_PLUSENGINE, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
+		// dave and bambi revived
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Dave & Bambi Plus Revived v1", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

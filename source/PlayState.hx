@@ -1161,14 +1161,13 @@ class PlayState extends MusicBeatState
 		judgementCounter.scrollFactor.set();
 		judgementCounter.cameras = [camHUD];
 		judgementCounter.screenCenter(Y);
-		judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nPhone Breaks: ${misses}';
-		if (ClientPrefs.judgementCounter)
-		{
+		judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nPhone Breaks: ${songMisses}';
+		if (ClientPrefs.judgementCounter) {
 			add(judgementCounter);
 		}
 
-		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "CHEATER", 32);
+		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.RED, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
@@ -1192,13 +1191,71 @@ class PlayState extends MusicBeatState
 		judgementCounter.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-		// if (SONG.song == 'South')
-		// FlxG.camera.alpha = 0.7;
-		// UI_camera.zoom = 1;
+		// new plus engine
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "New Plus Engine v" + VERSION_PLUSENGINE, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		// dave and bambi revived
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Dave & Bambi Plus Revived v1", 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		versionShit.cameras = [camHUD];
 
-		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
-		
+
+		#if FORCE_SCRIPT
+		for (notetype in noteTypeMap.keys())
+		{
+			#if MODS_ALLOWED
+			var luaToLoad:String = Paths.modFolders('forceRunScript/' + notetype + '.lua');
+			if(FileSystem.exists(luaToLoad))
+			{
+				luaArray.push(new FunkinLua(luaToLoad));
+			}
+			else
+			{
+				luaToLoad = Paths.getPreloadPath('forceRunScript/' + notetype + '.lua');
+				if(FileSystem.exists(luaToLoad))
+				{
+					luaArray.push(new FunkinLua(luaToLoad));
+				}
+			}
+			#elseif sys
+			var luaToLoad:String = Paths.getPreloadPath('forceRunScript/' + notetype + '.lua');
+			if(OpenFlAssets.exists(luaToLoad))
+			{
+				luaArray.push(new FunkinLua(luaToLoad));
+			}
+			#end
+		}
+		for (event in eventPushedMap.keys())
+		{
+			#if MODS_ALLOWED
+			var luaToLoad:String = Paths.modFolders('forceRunScript/' + event + '.lua');
+			if(FileSystem.exists(luaToLoad))
+			{
+				luaArray.push(new FunkinLua(luaToLoad));
+			}
+			else
+			{
+				luaToLoad = Paths.getPreloadPath('forceRunScript/' + event + '.lua');
+				if(FileSystem.exists(luaToLoad))
+				{
+					luaArray.push(new FunkinLua(luaToLoad));
+				}
+			}
+			#elseif sys
+			var luaToLoad:String = Paths.getPreloadPath('forceRunScript/' + event + '.lua');
+			if(OpenFlAssets.exists(luaToLoad))
+			{
+				luaArray.push(new FunkinLua(luaToLoad));
+			}
+			#end
+		}
+		#end
+
 		#if LUA_ALLOWED
 		for (notetype in noteTypeMap.keys())
 		{

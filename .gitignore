@@ -18,3 +18,5 @@ export/*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+# File Haxelib should not share
+.haxelib/
