@@ -8,7 +8,8 @@ import flixel.FlxCamera;
 
 class MusicBeatState extends FlxUIState
 {
-	var VERSION_PLUSENGINE:String = "1.0.0";
+	public static var getVERSION:String = "1.0.0";
+	var VERSION_PLUSENGINE:String = '';
 	private var curSection:Int = 0;
 	private var stepsToDo:Int = 0;
 
@@ -25,6 +26,7 @@ class MusicBeatState extends FlxUIState
 		return PlayerSettings.player1.controls;
 
 	override function create() {
+		VERSION_PLUSENGINE = getVERSION;
 		camBeat = FlxG.camera;
 		var skip:Bool = FlxTransitionableState.skipNextTransOut;
 		super.create();
