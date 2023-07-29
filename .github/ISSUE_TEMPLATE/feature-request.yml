@@ -1,5 +1,5 @@
 name: Feature Request
-description: No, i won't add 6K/etc to the engine or winning icons, stop asking for it. REQUESTING FOR A STAGE EDITOR WILL RESULT IN A BAN, I ALREADY SAID I WILL DO IT LATER GOD DAMN IT.
+description: No, i will add 6K/etc to the engine but i won't winning icons, stop asking for it. REQUESTING FOR A STAGE EDITOR WILL RESULT IN A BAN, I ALREADY SAID I WILL DO IT LATER GOD DAMN IT.
 labels: [enhancement]
 body:
   - type: textarea
@@ -10,7 +10,7 @@ body:
   - type: dropdown
     id: eyetest
     attributes:
-      label: To test your sight, and reliability, please select the option of what should NOT be requested.
+      label: To test your sight, and reliability, please select the option of what should be requested.
       options:
         - Proper credit that was forgotten
         - Thing that would not cause problems
