@@ -44,6 +44,10 @@ class MainMenuState extends MusicBeatState
 	var camFollowPos:FlxObject;
 	var checker:FlxBackdrop;  //background infinite 
 	var debugKeys:Array<FlxKey>;
+	
+	public static var firstStart:Bool = true;
+
+	public static var finishedFunnyMove:Bool = false;
 
 	override function create()
 	{
@@ -115,25 +119,30 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
-			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
-			menuItem.scale.x = scale;
-			menuItem.scale.y = scale;
-			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
-			menuItem.animation.play('idle');
-			menuItem.ID = i;
-			menuItem.screenCenter(X);
-			menuItems.add(menuItem);
-			var scr:Float = (optionShit.length - 4) * 0.135;
-			if(optionShit.length < 6) scr = 0;
-			menuItem.scrollFactor.set(0, scr);
-			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
-			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
-			menuItem.updateHitbox();
-		}
+				var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 1.6);
+				menuItem.scale.x = scale;
+				menuItem.scale.y = scale;
+				menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
+				menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
+				menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
+				menuItem.animation.play('idle');
+				menuItem.ID = i;
+				menuItem.x = -200;
+				menuItems.add(menuItem);
+				menuItem.scrollFactor.set();
+				menuItem.antialiasing = ClientPrefs.globalAntialiasing;
+				if (firstStart)
+					FlxTween.tween(menuItem,{y: 60 + (i * 160)},1 + (i * 0.25) ,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+						{ 
+							finishedFunnyMove = true; 
+							changeItem();
+						}});
+				else
+					menuItem.y = 60 + (i * 160);
+			}
 
+		firstStart = false;
+		
 		FlxG.camera.follow(camFollowPos, null, 1);
 
 		// new plus engine
