@@ -5,6 +5,7 @@ Play this mod where its have removed stuffs and more
 * Shadow Mario - Programmer
 * RiverOaken - Artist
 * Yoshubs - Assistant Programmer
+* WhatsDownYT - main menu script
 
 ### Special Thanks
 * bbpanzu - Ex-Programmer
