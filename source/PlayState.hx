@@ -1192,7 +1192,7 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		// new plus engine
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "New Plus Engine v" + VERSION_PLUSENGINE, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Plus Engine v1.0", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
