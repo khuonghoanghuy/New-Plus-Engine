@@ -1191,13 +1191,8 @@ class PlayState extends MusicBeatState
 		judgementCounter.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-		// new plus engine
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Plus Engine v1.0", 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
 		// dave and bambi revived
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Dave & Bambi Plus Revived v1", 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Plus Engine v1.0 (DO NOT STEAL IT)", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
