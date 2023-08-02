@@ -18,7 +18,7 @@ class OutdatedState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 
-		warnText = new FlxText(0, 0, FlxG.width,
+		/*warnText = new FlxText(0, 0, FlxG.width,
 			"Sup bro, looks like you're running an   \n
 			outdated version of Psych Engine (" + VERSION_PLUSENGINE + "),\n
 			please update to " + TitleState.updateVersion + "!\n
@@ -28,7 +28,13 @@ class OutdatedState extends MusicBeatState
 			32);
 		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		warnText.screenCenter(Y);
-		add(warnText);
+		add(warnText);*/
+
+		warnText = new FlxText(0, 0, FlxG.width, 
+			"Sup Bro, i think you are using a old version of Plus Engine", 32);
+		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+		warnText.screenCenter(Y);
+		add(warnText);	
 	}
 
 	override function update(elapsed:Float)
