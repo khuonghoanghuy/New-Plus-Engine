@@ -50,7 +50,8 @@ class ClientPrefs {
 		'instakill' => false,
 		'practice' => false,
 		'botplay' => false,
-		'opponentplay' => false
+		'opponentplay' => false,
+		'ghostMode' => false
 	];
 
 	public static var comboOffset:Array<Int> = [0, 0, 0, 0];
@@ -132,7 +133,7 @@ class ClientPrefs {
 		FlxG.save.data.comboStacking = comboStacking;
 
 		FlxG.save.data.judgementCounter = judgementCounter;
-	
+
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();

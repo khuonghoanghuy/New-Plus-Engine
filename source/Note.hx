@@ -1,11 +1,6 @@
 package;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.math.FlxMath;
-import flixel.util.FlxColor;
-import flash.display.BitmapData;
 import editors.ChartingState;
 
 using StringTools;
@@ -164,6 +159,7 @@ class Note extends FlxSprite
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false)
 	{
 		super();
+		var ghostMode = ClientPrefs.getGameplaySetting("ghostMode", false);
 
 		if (prevNote == null)
 			prevNote = this;
@@ -243,6 +239,13 @@ class Note extends FlxSprite
 			earlyHitMult = 1;
 		}
 		x += offsetX;
+
+		// ghost mode stuff
+		if (ghostMode){
+			visible = false;
+		}else{
+			visible = true;
+		}
 	}
 
 	var lastNoteOffsetXForPixelAutoAdjusting:Float = 0;
