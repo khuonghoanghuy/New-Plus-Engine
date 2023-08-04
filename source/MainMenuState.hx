@@ -35,7 +35,7 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
-		'credits',
+		'bios',
 		'options'
 	];
 
@@ -268,6 +268,8 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
+									case 'bios':
+										MusicBeatState.switchState(new BiosMenuState());
 								}
 							});
 						}
