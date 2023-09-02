@@ -41,7 +41,7 @@ class MainMenuState extends MusicBeatState
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
 
-	public static var sexo3:Bool = true;
+	public static var sexo3:Bool = true; //wtf, why i am doing in my life
 
 	public static var firstStart:Bool = true;
 
